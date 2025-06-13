@@ -1,0 +1,11 @@
+DROP DATABASE IF EXISTS login;
+
+CREATE DATABASE IF NOT EXISTS login;
+
+USE login;
+
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(255),
+    senha VARCHAR(255)
+);
