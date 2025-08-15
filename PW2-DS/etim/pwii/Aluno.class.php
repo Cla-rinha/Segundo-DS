@@ -8,14 +8,14 @@ class Aluno{
     private $pdo;
 
     public function conectar(){
-        private $dns    = "mysql:dbname=etimpwiialuno,host=localhost";
-        private $dbUser = "root";
-        private $dbPass = "";
+        $dns    = "mysql:dbname=etimpwiialuno;host=localhost";
+        $dbUser = "root";
+        $dbPass = "";
 
         try {
             $this->pdo = new PDO($dns, $dbUser, $dbPass);
             return true;
-        } cacth (\Throwable $th) {
+        } catch (\Throwable $th) {
             return false;
         }
     }
@@ -59,5 +59,14 @@ class Aluno{
         $sql-> bindValue(":c", $cpf);
 
         return $sql->execute();
+    }
+    
+    public function consultar($email){
+        $sql = "SELECT * FROM aluno where email = :e";
+        $sql = $this->pdo->prepare($sql);
+        $sql-> bindValue(":e", $email);
+        
+        $sql->execute();
+        return $sql->rowCount() > 0;
     }
 }
