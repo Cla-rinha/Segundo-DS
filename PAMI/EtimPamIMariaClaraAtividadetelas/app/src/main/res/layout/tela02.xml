@@ -2,46 +2,49 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#EFEFEF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="437dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="45dp"
+        android:layout_width="349dp"
+        android:layout_height="42dp"
         android:ems="10"
-        android:hint="contato@hotmail.com"
+        android:hint="  contato@hotmail.com"
         android:inputType="text"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextText6"
-        android:layout_width="437dp"
-        android:layout_height="50dp"
+        android:layout_width="346dp"
+        android:layout_height="47dp"
         android:ems="10"
-        android:hint="1234"
+        android:hint="  1234"
+        android:background="@color/white"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="105dp"
-        android:layout_height="36dp"
-        android:text="Cadastrar"
-        android:textSize="10dp"
+        android:layout_width="139dp"
+        android:layout_height="41dp"
+        android:backgroundTint="#fff"
+        android:text="Cadastrar-se"
+        android:textColor="#0E545B"
         app:cornerRadius="1dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="374dp"
-        tools:layout_editor_absoluteY="487dp" />
+        tools:layout_editor_absoluteX="242dp"
+        tools:layout_editor_absoluteY="417dp" />
 
     <Button
         android:id="@+id/button4"
@@ -60,27 +63,28 @@
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="186dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="4dp"
         android:text="manter-me logado"
+        android:textColor="#0E545B"
         app:layout_constraintTop_toBottomOf="@+id/editTextText6"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="45dp" />
+        tools:layout_editor_absoluteX="33dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="180dp"
         android:fontFamily="sans-serif-medium"
         android:text="Login"
         android:textColor="#00585D"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -92,27 +96,51 @@
         android:layout_marginTop="92dp"
         android:text="Seu e-mail"
         android:textSize="18dp"
+        android:textColor="#0E545B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="47dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Senha"
+        android:text="Sua senha"
+        android:textSize="18dp"
+        android:textColor="#0E545B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText"
-        tools:layout_editor_absoluteX="47dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="141dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="2dp"
         android:text="Ainda não tem conta?"
+        android:textColor="#6A6363"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="223dp"
-        tools:layout_editor_absoluteY="497dp" />
+        tools:layout_editor_absoluteY="430dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="346dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#1193A4"
+        android:text="Logar"
+        android:textSize="20dp"
+        app:cornerRadius="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
