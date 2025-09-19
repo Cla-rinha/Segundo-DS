@@ -7,16 +7,18 @@
     <title>Cadastrar Aluno</title>
 </head>
     <body>
-        <div class="container">
-            <div class="form">
-                <h1>Cadastrar Aluno</h1>
-                <input type="text" placeholder="Digite seu nome completo">
-                <input type="text" placeholder="Digite seu email">
-                <input type="password" placeholder="Digite seu CPF">
-                <input type="password" placeholder="Digite seu RM">
+        <form action="../cadastra.php" method="post">
+            <div class="container">
+                <div class="form">
+                    <h1>Cadastrar Aluno</h1>
+                    <input type="text" placeholder="Digite seu nome completo" required name="nomeAluno">
+                    <input type="text" placeholder="Digite seu email" required name="emailAluno">
+                    <input type="text" placeholder="Digite seu CPF" required name="cpfAluno">
+                    <input type="text" placeholder="Digite seu RM" required name="rmAluno">
                 
-                <button type="submit">Cadastrar</button>
-            </div>
-        </div> 
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </div> 
+        </form>
     </body>
 </html>

@@ -3,8 +3,8 @@ class Aluno{
     private $id;
     private $rm;
     private $nome;
-    private $cpf;
     private $email;
+    private $cpf;
     private $pdo;
 
     public function conectar(){
@@ -49,7 +49,7 @@ class Aluno{
         $this ->cpf =$cpf;
     }
 
-    public function cadastrar($email, $cpf, $rm, $nome){
+    public function cadastrar($rm, $nome , $email , $cpf){
         $sql = "INSERT INTO aluno set rm = :r, nome = :n, email = :e, cpf = :c";
         $sql = $this->pdo->prepare($sql);
 
