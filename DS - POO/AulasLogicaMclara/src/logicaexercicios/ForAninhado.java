@@ -6,7 +6,7 @@ public class ForAninhado {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 int soma = i + j;
-                System.out.println(soma + "\t");
+                System.out.print(soma + "\t");
             }
             System.out.println();
         }

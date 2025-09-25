@@ -8,7 +8,7 @@ public class Continue {
             if (i % 3 == 0) {
                 continue;
             }
-            System.out.println("Numero: " + 1);
+            System.out.println("Numero: " + i);
         }
     }
 }
