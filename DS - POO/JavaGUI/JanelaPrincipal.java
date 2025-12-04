@@ -1,72 +1,49 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
-import javax.swing.*;
-
 public class JanelaPrincipal extends JFrame {
-    private JTextField campoNome;
-    private JTextField campoEmail;
-    private JTextField campoRua;
-    private JTextField campoCidade;
+    private JTextField campoNome, campoEmail, campoRua, campoCidade;
     private JComboBox<String> comboCurso;
-    private JCheckBox checkEmail;
-    private JCheckBox checkNotificacao;
-    private JRadioButton radioMasc;
-    private JRadioButton radioFem;
-    private JButton btnCadastrar;
-    private JButton btnLimpar;
-
-    private JButton btnAtualizar;
-    private JButton btnExcluir;
-
+    private JCheckBox checkEmail, checkNotificacao;
+    private JRadioButton radioMasc, radioFem;
+    private JButton btnCadastrar, btnLimpar;
     private JTable tabela;
     private DefaultTableModel modeloTabela;
-    private JButton btnSair;
-
     public JanelaPrincipal() {
-        this.setTitle("sistema de cadastro de alonos");
-        this.setSize(500, 400);
-        this.setDefaultCloseOperation(3);
-        this.setLocationRelativeTo((Component)null);
+        setTitle("Sistema de Cadastro de Alunos");
+        setSize(700, 500);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        // Menu
         JMenuBar barra = new JMenuBar();
         JMenu menuArquivo = new JMenu("Arquivo");
         JMenuItem itemSair = new JMenuItem("Sair");
-        itemSair.addActionListener((e) -> {
-            System.exit(0);
-        });
+        itemSair.addActionListener(e -> System.exit(0));
         menuArquivo.add(itemSair);
         JMenu menuAjuda = new JMenu("Ajuda");
         JMenuItem itemSobre = new JMenuItem("Sobre");
-        itemSobre.addActionListener((e) -> {
-            JOptionPane.showMessageDialog(this, "sistema de cadastro de alunos\nVersão 1.0 ");
-        });
+        itemSobre.addActionListener(e -> JOptionPane.showMessageDialog(this,
+                "Sistema de Cadastro de Alunos\nCRUD Completo\nVersão 2.0"));
         menuAjuda.add(itemSobre);
         barra.add(menuArquivo);
         barra.add(menuAjuda);
-        this.setJMenuBar(barra);
-
+        setJMenuBar(barra);
+        // Abas
         JTabbedPane abas = new JTabbedPane();
-
+        // Painel Cadastro
         JPanel painelCadastro = new JPanel(new GridLayout(7,2));
         painelCadastro.add(new JLabel("Nome:"));
         campoNome = new JTextField(20);
         painelCadastro.add(campoNome);
-
         painelCadastro.add(new JLabel("Email:"));
         campoEmail = new JTextField(20);
         painelCadastro.add(campoEmail);
-
         painelCadastro.add(new JLabel("Curso:"));
         String[] cursos = {"Java", "Python", "C#", "JavaScript"};
         comboCurso = new JComboBox<>(cursos);
         painelCadastro.add(comboCurso);
-
         painelCadastro.add(new JLabel("Gênero:"));
         JPanel painelGenero = new JPanel();
         radioMasc = new JRadioButton("Masculino");
@@ -77,76 +54,62 @@ public class JanelaPrincipal extends JFrame {
         painelGenero.add(radioMasc);
         painelGenero.add(radioFem);
         painelCadastro.add(painelGenero);
-
         checkEmail = new JCheckBox("Receber emails");
         checkNotificacao = new JCheckBox("Ativar notificações");
         painelCadastro.add(checkEmail);
         painelCadastro.add(checkNotificacao);
-
         painelCadastro.add(new JLabel("Rua:"));
         campoRua = new JTextField(20);
         painelCadastro.add(campoRua);
-
         painelCadastro.add(new JLabel("Cidade:"));
         campoCidade = new JTextField(20);
         painelCadastro.add(campoCidade);
-
         JPanel painelBotoes = new JPanel();
         btnCadastrar = new JButton("Cadastrar");
         btnLimpar = new JButton("Limpar");
         painelBotoes.add(btnCadastrar);
         painelBotoes.add(btnLimpar);
-
         JPanel painelCadastroCompleto = new JPanel(new BorderLayout());
         painelCadastroCompleto.add(painelCadastro, BorderLayout.CENTER);
         painelCadastroCompleto.add(painelBotoes, BorderLayout.SOUTH);
-
         abas.add("Cadastro", painelCadastroCompleto);
-
-        modeloTabela = new DefaultTableModel(new Object[]{"ID", "Nome", "Email", "Curso", "Cidade"}, 0);
-        JTable tabela = new JTable(modeloTabela);
+        // Painel Lista
+        modeloTabela = new DefaultTableModel(new Object[]{"ID","Nome","Email","Curso","Cidade"},0);
+        tabela = new JTable(modeloTabela);
 
         JButton btnAtualizar = new JButton("Atualizar");
         JButton btnExcluir = new JButton("Excluir");
         JPanel painelListaBotoes = new JPanel();
         painelListaBotoes.add(btnAtualizar);
         painelListaBotoes.add(btnExcluir);
-
         JPanel painelLista = new JPanel(new BorderLayout());
         painelLista.add(new JScrollPane(tabela), BorderLayout.CENTER);
         painelLista.add(painelListaBotoes, BorderLayout.SOUTH);
         abas.add("Lista de Alunos", painelLista);
-
+        // Ações
         btnCadastrar.addActionListener(e -> cadastrarAluno());
         btnLimpar.addActionListener(e -> limparCampos());
         btnAtualizar.addActionListener(e -> atualizarAluno());
         btnExcluir.addActionListener(e -> excluirAluno());
-
         getContentPane().add(abas);
         carregarTabela();
         setVisible(true);
-
     }
-
     private void cadastrarAluno() {
         Aluno aluno = new Aluno();
-        AlunoDAO alunoDAO = new AlunoDAO();
-
-        aluno.setNome(this.campoNome.getText());
-        aluno.setEmail(this.campoEmail.getText());
-        aluno.setCurso((String)this.comboCurso.getSelectedItem());
-        aluno.setGenero(this.radioMasc.isSelected() ? "Masculino" : "Feminino");
-        aluno.setReceberEmail(this.checkEmail.isSelected());
-        aluno.setReceberNotificacoes(this.checkNotificacao.isSelected());
-        aluno.setRua(this.campoRua.getText());
-        aluno.setCidade(this.campoCidade.getText());
-        String var10001 = aluno.getNome();
-
-        alunoDAO.salvar(aluno);
-        JOptionPane.showMessageDialog(this, "Aluno cadastrado com sucesso.\nNome: " + var10001 + "\nEmail:" + aluno.getEmail() + "\nCurso:" + aluno.getCurso() + "\nGenero:" + aluno.getGenero() + "\nRua:" + aluno.getRua() + "\nCidade:" + aluno.getCidade());
-
+        aluno.setNome(campoNome.getText());
+        aluno.setEmail(campoEmail.getText());
+        aluno.setCurso((String) comboCurso.getSelectedItem());
+        aluno.setGenero(radioMasc.isSelected() ? "Masculino" : "Feminino");
+        aluno.setReceberEmail(checkEmail.isSelected());
+        aluno.setReceberNotificacao(checkNotificacao.isSelected());
+        aluno.setRua(campoRua.getText());
+        aluno.setCidade(campoCidade.getText());
+        new AlunoDAO().salvar(aluno);
+        carregarTabela();
+        limparCampos();
+        JOptionPane.showMessageDialog(this, "Aluno cadastrado com sucesso!");
     }
-
     private void carregarTabela() {
         modeloTabela.setRowCount(0);
         List<Aluno> lista = new AlunoDAO().listar();
@@ -154,10 +117,7 @@ public class JanelaPrincipal extends JFrame {
             modeloTabela.addRow(new Object[]{a.getId(), a.getNome(), a.getEmail(), a.getCurso(), a.getCidade()});
         }
     }
-
     private void atualizarAluno() {
-        this.tabela = new
-                JTable(modeloTabela);
         int linha = tabela.getSelectedRow();
         if (linha == -1) {
             JOptionPane.showMessageDialog(this, "Selecione um aluno para atualizar.");
@@ -176,7 +136,6 @@ public class JanelaPrincipal extends JFrame {
         carregarTabela();
         JOptionPane.showMessageDialog(this, "Aluno atualizado com sucesso!");
     }
-
     private void excluirAluno() {
         int linha = tabela.getSelectedRow();
         if (linha == -1) {
@@ -188,23 +147,17 @@ public class JanelaPrincipal extends JFrame {
         carregarTabela();
         JOptionPane.showMessageDialog(this, "Aluno excluído com sucesso!");
     }
-
-
     private void limparCampos() {
-        this.campoNome.setText("");
-        this.campoEmail.setText("");
-        this.comboCurso.setSelectedIndex(0);
-        this.radioMasc.setSelected(false);
-        this.radioFem.setSelected(false);
-        this.checkEmail.setSelected(false);
-        this.checkNotificacao.setSelected(false);
-        this.campoRua.setText("");
-        this.campoCidade.setText("");
+        campoNome.setText("");
+        campoEmail.setText("");
+        campoRua.setText("");
+        campoCidade.setText("");
+        comboCurso.setSelectedIndex(0);
+        radioMasc.setSelected(false);
+        radioFem.setSelected(false);
+        checkEmail.setSelected(false);
+        checkNotificacao.setSelected(false);
     }
-
-    JPanel painelCadastro = new JPanel(new GridLayout(7,2));
-
-
     public static void main(String[] args) {
         new JanelaPrincipal();
     }

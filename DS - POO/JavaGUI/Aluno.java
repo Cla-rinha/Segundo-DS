@@ -88,5 +88,8 @@ class Aluno {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
+
+    public void setReceberNotificacao(boolean selected) {
+    }
 }
 
