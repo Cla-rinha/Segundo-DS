@@ -156,6 +156,8 @@ public class JanelaPrincipal extends JFrame {
     }
 
     private void atualizarAluno() {
+        this.tabela = new
+                JTable(modeloTabela);
         int linha = tabela.getSelectedRow();
         if (linha == -1) {
             JOptionPane.showMessageDialog(this, "Selecione um aluno para atualizar.");
